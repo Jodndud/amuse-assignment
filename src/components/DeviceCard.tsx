@@ -14,14 +14,13 @@ export default function DeviceCard({ device }: { device: Device }) {
         <Title>{device.name}</Title>
 
         <DetailWrapper>
-        {/* <Type>타입: {device.type}</Type> */}
-        {/* <Status>상태: {device.status}</Status> */}
+          <Type>타입: {device.type}</Type>
+          <Status>상태: {device.status}</Status>
         </DetailWrapper>
 
-        {/* 토글버튼 */}
-        {device.id === "d1" && (
-            <ToggleButton $on={true}>
-                <Circle $on={true} />
+        {device.type === "light" && (
+            <ToggleButton $on={device.state.power == 'on'}>
+                <Circle $on={device.state.power == 'on'} />
             </ToggleButton>
         )}
     </Card>

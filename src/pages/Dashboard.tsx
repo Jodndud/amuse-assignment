@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
 
+import { useRecoilValue } from 'recoil'
+import { devicesState } from '@/recoil/devicesState'
+
 import styled from "styled-components";
 import Header from '@/components/Header'
 import DeviceCard from "@/components/DeviceCard";
 
 export default function Dashboard() {
+  const devices = useRecoilValue(devicesState)
+
   return (
     <Wrapper>
       <Header>AmuseQ Dashboard</Header>
       <Container>
         <Title>내 등록 기기</Title>
         <LinkWrapper>
-          {[{id:"d1",name:"거실 조명"}, {id:"d2",name:"안방 에어컨"}, {id:"d3",name:"현관 도어락"}].map((device) => (
+          {devices.map((device) => (
             <Link key={device.id} to={`/device/${device.id}`}>
               <DeviceCard device={device} />
             </Link>

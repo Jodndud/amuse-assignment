@@ -7,7 +7,7 @@ export default function DetailHeader({ children }: {children: React.ReactNode}) 
   return (
     <Wrapper>
         <HeaderContainer>
-            <BackButton onClick={() => navigate(-1)}>←</BackButton>
+            <BackButton onClick={() => navigate(-1)}><img src="/src/assets/back-icon.svg" /></BackButton>
             <Title>{children}</Title>
         </HeaderContainer>
     </Wrapper>
@@ -24,6 +24,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   padding: 16px 20px;
+  gap: 16px;
   width:100%;
 
   @media (min-width: 920px) {
