@@ -1,0 +1,25 @@
+{
+  "devices": [
+    { 
+      "id": "d1", 
+      "name": "거실 조명", 
+      "type": "light", 
+      "status": "online", 
+      "state": { "power": "off" } 
+    },
+    { 
+      "id": "d2", 
+      "name": "안방 에어컨", 
+      "type": "ac", 
+      "status": "online", 
+      "state": { "power": "on", "temperature": 24 } 
+    },
+    { 
+      "id": "d3", 
+      "name": "현관 도어락", 
+      "type": "lock", 
+      "status": "offline", 
+      "state": { "locked": true } 
+    }
+  ]
+}
