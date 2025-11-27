@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import Home from '@/pages/Home'
+import Dashboard from '@/pages/Dashboard'
 
 function App() {
   return (
-    <div className='container mx-auto px-4 sm:px-0'>
+    <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Dashboard />} />
       </Routes>
     </div>
   )
