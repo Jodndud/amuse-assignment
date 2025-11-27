@@ -27,7 +27,7 @@ const LinkWrapper = styled.div`
   grid-template-columns: repeat(1, 1fr);
   gap:16px;
 
-  @media (min-width: 920px) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     gap:30px;
   }
@@ -39,21 +39,29 @@ const LinkWrapper = styled.div`
 
 const Title = styled.h2`
   font-weight: 600;
+  font-size: 16px;
   margin-bottom: 18px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 24px;
+  }
 `;
 
 const Wrapper = styled.main`
   width: 100%;
 `;
-
+ 
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 16px 20px;
 
-  @media (min-width: 920px) {
-    width: 768px;
-    padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 16px 40px;
   }
 
   @media (min-width: 1400px) {

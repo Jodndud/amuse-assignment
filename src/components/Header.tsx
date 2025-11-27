@@ -21,9 +21,8 @@ const HeaderContainer = styled.div`
   padding: 16px 20px;
   width: 100%;
 
-  @media (min-width: 920px) {
-    width: 768px;
-    padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 16px 40px;
   }
 
   @media (min-width: 1400px) {
@@ -35,7 +34,7 @@ const HeaderContainer = styled.div`
 const Title = styled.h1`
   font-size: 20px;
 
-  @media (min-width: 920px) {
+  @media (min-width: 768px) {
     font-size: 28px;
   }
 
