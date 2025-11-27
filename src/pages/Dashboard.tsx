@@ -38,7 +38,8 @@ const LinkWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-weight:600;
+  font-weight: 600;
+  margin-bottom: 18px;
 `;
 
 const Wrapper = styled.main`
