@@ -8,7 +8,7 @@
       "state": { "power": "off" } 
     },
     { 
-      "id": "d2", 
+      "id": "d2",
       "name": "안방 에어컨", 
       "type": "ac", 
       "status": "online", 

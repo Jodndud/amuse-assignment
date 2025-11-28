@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 import { useRecoilValue } from 'recoil'
 import { devicesState } from '@/recoil/devicesState'
+import { useGetDevices } from '@/hooks/useGetDevice'
 
 import styled from "styled-components";
 import Header from '@/components/Header'
 import DeviceCard from "@/components/DeviceCard";
 
 export default function Dashboard() {
+  useGetDevices()
   const devices = useRecoilValue(devicesState)
 
   return (

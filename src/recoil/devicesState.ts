@@ -1,10 +1,9 @@
 import { atom, selectorFamily } from 'recoil'
-import mockData from '@/data/mockData.json'
 import type { Device } from '@/types/Device'
 
 export const devicesState = atom<Device[]>({
   key: 'devicesState',
-  default: mockData.devices,
+  default: [],
 })
 
 export const deviceByIdState = selectorFamily<Device | undefined, string>({
