@@ -7,7 +7,7 @@ export default function DeviceCard({ device }: { device: Device }) {
     d1: "/src/assets/light.png",
     d2: "/src/assets/ac.png",
     d3: "/src/assets/lock.png",
-  }[device.id];
+  }[device.id]
   
   const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
 

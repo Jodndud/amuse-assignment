@@ -6,6 +6,7 @@ export const devicesState = atom<Device[]>({
   default: [],
 })
 
+// 상세페이지 조회
 export const deviceByIdState = selectorFamily<Device | undefined, string>({
   key: 'deviceByIdState',
   get:
