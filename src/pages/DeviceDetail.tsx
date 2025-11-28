@@ -1,5 +1,4 @@
 import { useParams  } from 'react-router-dom'
-import { useState } from 'react';
 import {useGetDeviceById} from '@/hooks/useGetDevice'
 
 import styled from "styled-components";
@@ -35,7 +34,9 @@ export default function DeviceDetail(){
                 <DetailWrapper>
                     <Detail $on={false}>타입: {typeLabel}</Detail>
                     <Detail $on={false}>상태: {device?.status}</Detail>
-                    <Detail $on={device?.state?.power === "on"}>전원: {device?.state.power}</Detail>
+                    {device?.state.power && (
+                        <Detail $on={true}>전원: {device?.state.power}</Detail>
+                    )}
                 </DetailWrapper>
 
                 <ContentWrapper>
