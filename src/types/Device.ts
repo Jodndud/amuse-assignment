@@ -8,4 +8,5 @@ export interface Device {
     temperature?: number;
     locked?: boolean;
   };
+  imageUrl: string;
 }

@@ -7,7 +7,7 @@ export default function DetailHeader({ children }: {children: React.ReactNode}) 
   return (
     <Wrapper>
         <HeaderContainer>
-            <BackButton onClick={() => navigate(-1)}><img src="/src/assets/back-icon.svg" /></BackButton>
+            <BackButton onClick={() => navigate(-1)}><Icon src="/src/assets/back-icon.svg" /></BackButton>
             <Title>{children}</Title>
         </HeaderContainer>
     </Wrapper>
@@ -16,6 +16,9 @@ export default function DetailHeader({ children }: {children: React.ReactNode}) 
 
 const Wrapper = styled.header`
   width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
 `;
 
 const HeaderContainer = styled.div`
@@ -27,13 +30,12 @@ const HeaderContainer = styled.div`
   gap: 16px;
   width:100%;
 
-  @media (min-width: 920px) {
-    width:768px;
-    padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 16px 40px;
   }
 
   @media (min-width: 1400px) {
-    width:1280px;
+    width: 1280px;
     padding: 16px 0;
   }
 `;
@@ -45,14 +47,29 @@ const BackButton = styled.button`
   cursor: pointer;
 `;
 
+
+const Icon = styled.img`
+  object-fit: contain;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 24px;
+  }
+
+  @media (min-width: 1400px) {
+    width: 28px;
+  }
+
+`;
+
 const Title = styled.h1`
   font-size: 20px;
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     font-size: 28px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1400px) {
     font-size: 32px;
   }
 `;

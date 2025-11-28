@@ -12,6 +12,9 @@ export default function Header({ children }: { children: React.ReactNode }) {
 
 const Wrapper = styled.header`
   width: 100%;
+  position: fixed;
+  top:0;
+  background: #f2f2f2;
 `;
 
 const HeaderContainer = styled.div`
