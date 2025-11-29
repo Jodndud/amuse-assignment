@@ -45,7 +45,7 @@ export default function DeviceDetail(){
 
                 <DetailWrapper>
                     <Detail $on={false}>타입: {typeLabel}</Detail>
-                    <Detail $on={false}>상태: {device?.status}</Detail>
+                    <Detail $on={device?.status === 'online'}>상태: {device?.status}</Detail>
                     {device?.state.power && (
                         <Detail $on={device?.state.power === 'on'}>전원: {device?.state.power}</Detail>
                     )}
