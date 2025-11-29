@@ -62,7 +62,7 @@ export default function DeviceDetail(){
                                 <Button onClick={() => handleChangeTemp(-1)}>
                                     <img src="/src/assets/minus-icon.svg" alt="minus" />
                                 </Button>
-                                <div className='text-[40px] font-bold'>{device?.state.temperature}</div>
+                                <div className='text-[40px] font-bold'>{device?.state.temperature}<span className='font-medium text-[28px] ml-1'>℃</span></div>
                                 <Button onClick={() => handleChangeTemp(1)}>
                                     <img src="/src/assets/plus-icon.svg" alt="plus" />
                                 </Button>
@@ -73,6 +73,11 @@ export default function DeviceDetail(){
                     {device?.type === 'lock' && (
                         <Content>
                             <Title>🔒잠금여부</Title>
+                            {device.state.locked ? (
+                                <div className='border-1 border-[#dedede] bg-[#efffeb] rounded-lg p-3 text-center text-md font-bold text-green-400'>현재 기기가 잠금 상태입니다</div>
+                            ) : (
+                                <div className='border-1 border-[#dedede] bg-[#ffeaea] rounded-lg p-3 text-center text-md font-bold text-red-400'>현재 기기가 잠금해제 상태입니다</div>
+                            )}
                         </Content>
                     )}
                 </ContentWrapper>
@@ -86,6 +91,7 @@ const Wrapper = styled.div`
 
 const IconWrapper = styled.div`
   background: #fff;
+  padding-bottom: 20px;
 `
 
 const Container = styled.div`
