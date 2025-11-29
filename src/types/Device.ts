@@ -9,4 +9,5 @@ export interface Device {
     locked?: boolean;
   };
   imageUrl: string;
+  description: string;
 }

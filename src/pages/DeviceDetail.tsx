@@ -5,16 +5,25 @@ import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
 import {useGetDeviceById} from '@/hooks/useGetDevice'
 import { useToggleDevicePower } from "@/hooks/useToggleDevicePower";
+import { useUpdateTemperature } from "@/hooks/useUpdateTemperature";
+
 
 export default function DeviceDetail(){
     const { deviceId } = useParams<{ deviceId: string }>()
     const { device } = useGetDeviceById(deviceId)
     const typeLabel = device ? DEVICE_TYPE_LABEL[device.type] ?? device.type : ''
     const { togglePower } = useToggleDevicePower();
+    const { changeTemperature } = useUpdateTemperature();
 
     const handleTogglePower = () => {
         if (!deviceId) return;
         togglePower(deviceId);
+    };
+
+    const handleChangeTemp = (delta: number) => {
+        if (!deviceId) return;
+        if (device?.type !== "ac") return;
+        changeTemperature(deviceId, delta);
     };
 
     return(
@@ -42,10 +51,30 @@ export default function DeviceDetail(){
                     )}
                 </DetailWrapper>
 
+                <Description>{device?.description || "제품의 설명이 없습니다."}</Description>
+
                 <ContentWrapper>
-                    <Content>
-                        <Title></Title>
-                    </Content>
+
+                    {device?.type === 'ac' && (
+                        <Content>
+                            <Title>🌡️온도조절</Title>
+                            <div className='flex items-center justify-center gap-10'>
+                                <Button onClick={() => handleChangeTemp(-1)}>
+                                    <img src="/src/assets/minus-icon.svg" alt="minus" />
+                                </Button>
+                                <div className='text-[40px] font-bold'>{device?.state.temperature}</div>
+                                <Button onClick={() => handleChangeTemp(1)}>
+                                    <img src="/src/assets/plus-icon.svg" alt="plus" />
+                                </Button>
+                            </div>
+                        </Content>
+                    )}
+                    
+                    {device?.type === 'lock' && (
+                        <Content>
+                            <Title>🔒잠금여부</Title>
+                        </Content>
+                    )}
                 </ContentWrapper>
             </Container>
         </Wrapper>
@@ -109,9 +138,8 @@ const Detail = styled.span<{ $on: boolean }>`
 
 const PowerButton = styled.div<{ $on: boolean }>`
   position: absolute;
-  top: -50%;
+  top: -26px;
   right: 20px;
-  transform: translate(0, 12px);
 
   background: #fafafa;
   background-color: ${props =>
@@ -142,7 +170,7 @@ const PowerButton = styled.div<{ $on: boolean }>`
 const ContentWrapper = styled.div`
   display:grid;
   grid-template-columns: repeat(1, 1fr);
-  gap:16px;
+  gap:20px;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -158,10 +186,28 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 24px;
 `
 
 const Title = styled.h2`
   font-size: 18px;
   font-weight: 600;
+`
+
+const Description = styled.div`
+  padding: 60px 0;
+  font-size:14px;
+  color: #a5a5a5;
+  text-align: center;
+`
+
+const Button = styled.button`
+  background: #fff;
+  width: 31px;height: 31px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px 0 #00000007;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `
