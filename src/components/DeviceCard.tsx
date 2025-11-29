@@ -2,8 +2,16 @@ import type { Device } from "@/types/Device";
 import styled from "styled-components";
 import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
+import { useToggleDevicePower } from "@/hooks/useToggleDevicePower";
+
 export default function DeviceCard({ device }: { device: Device }) {  
   const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
+      const { togglePower } = useToggleDevicePower();
+  
+      const handleTogglePower = (id: string) => {
+          if (!id) return;
+          togglePower(id);
+      };
 
   return (
     <Card>
@@ -16,7 +24,13 @@ export default function DeviceCard({ device }: { device: Device }) {
         </DetailWrapper>
 
         {device.type === "light" && (
-            <ToggleButton $on={device.state.power == 'on'}>
+            <ToggleButton
+              $on={device.state.power == 'on'}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleTogglePower(device?.id)}}
+            >
                 <Circle $on={device.state.power == 'on'} />
             </ToggleButton>
         )}
@@ -84,5 +98,5 @@ const Circle = styled.div<{ $on: boolean }>`
   height: 15px;
   background: #fff;
   border-radius: 50%;
-  transition: all 0.5s;
+  transition: all 0.2s;
 `;
