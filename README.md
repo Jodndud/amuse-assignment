@@ -31,6 +31,27 @@ yarn dev
 ```
 
 ## 프로젝트 구조
+```
+프로젝트 루트/
+├── docs/
+│   ├── data-flow.md
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── data/
+│   ├── hooks/
+│   ├── mocks/
+│   ├── pages/
+│   ├── recoil/
+│   ├── types/
+├── App.css
+├── App.tsx
+├── index.css
+├── main.tsx
+├── ...
+└── README.md
+```
 
 ## Git Commit 컨벤션
 이 프로젝트에서는 의미 있는 커밋 단위와 일관된 커밋 메시지를 위해

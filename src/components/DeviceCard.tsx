@@ -1,27 +1,23 @@
 import type { Device } from "@/types/Device";
 import styled from "styled-components";
+import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
-export default function DeviceCard({ device }: { device: Device }) {
-  const imageSrc = {
-    d1: "/src/assets/light.png",
-    d2: "/src/assets/ac.png",
-    d3: "/src/assets/lock.png",
-  }[device.id];
+export default function DeviceCard({ device }: { device: Device }) {  
+  const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
 
   return (
     <Card>
-        <Icon src={imageSrc} alt={device.name} />
+        <Icon src={device.imageUrl} alt={device.name} />
         <Title>{device.name}</Title>
 
         <DetailWrapper>
-        {/* <Type>타입: {device.type}</Type> */}
-        {/* <Status>상태: {device.status}</Status> */}
+          <Type>타입: {typeLabel}</Type>
+          <Status>상태: {device.status}</Status>
         </DetailWrapper>
 
-        {/* 토글버튼 */}
-        {device.id === "d1" && (
-            <ToggleButton $on={true}>
-                <Circle $on={true} />
+        {device.type === "light" && (
+            <ToggleButton $on={device.state.power == 'on'}>
+                <Circle $on={device.state.power == 'on'} />
             </ToggleButton>
         )}
     </Card>

@@ -1,11 +1,13 @@
 export interface Device {
   id: string;
   name: string;
-//   type: "light" | "ac" | "lock";
-//   status: "online" | "offline";
-//   state: {
-//     power?: "on" | "off";
-//     temperature?: number;
-//     locked?: boolean;
-//   };
+  type: string;
+  status: string;
+  state: {
+    power?: string;
+    temperature?: number;
+    locked?: boolean;
+  };
+  imageUrl: string;
+  description: string;
 }
