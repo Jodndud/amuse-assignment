@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { devicesState } from '@/recoil/devicesState'
 
 export function useGetDevices() {
-  const setDevices = useSetRecoilState(devicesState)
+  const [devices, setDevices] = useRecoilState(devicesState);
 
   useEffect(() => {
+    if (devices.length > 0) return;
+
     async function load() {
       const res = await fetch('/api/devices')
       const data = await res.json()

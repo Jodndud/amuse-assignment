@@ -1,18 +1,21 @@
 import { useParams  } from 'react-router-dom'
-import {useGetDeviceById} from '@/hooks/useGetDevice'
-
 import styled from "styled-components";
 import DetailHeader from "@/components/DetailHeader";
 import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
+import {useGetDeviceById} from '@/hooks/useGetDevice'
+import { useToggleDevicePower } from "@/hooks/useToggleDevicePower";
 
 export default function DeviceDetail(){
     const { deviceId } = useParams<{ deviceId: string }>()
     const { device } = useGetDeviceById(deviceId)
     const typeLabel = device ? DEVICE_TYPE_LABEL[device.type] ?? device.type : ''
+    const { togglePower } = useToggleDevicePower();
 
     const handleTogglePower = () => {
-    }
+        if (!deviceId) return;
+        togglePower(deviceId);
+    };
 
     return(
         <Wrapper>
@@ -35,7 +38,7 @@ export default function DeviceDetail(){
                     <Detail $on={false}>타입: {typeLabel}</Detail>
                     <Detail $on={false}>상태: {device?.status}</Detail>
                     {device?.state.power && (
-                        <Detail $on={true}>전원: {device?.state.power}</Detail>
+                        <Detail $on={device?.state.power === 'on'}>전원: {device?.state.power}</Detail>
                     )}
                 </DetailWrapper>
 
