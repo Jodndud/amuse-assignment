@@ -9,6 +9,7 @@ export function useRandomDeviceStatus() {
     const interval = setInterval(() => {
       setDevices((prev) => {
         const randomIndex = Math.floor(Math.random() * prev.length)
+        
         const target = prev[randomIndex]
         const newStatus = target.status === 'online' ? 'offline' : 'online'
 
