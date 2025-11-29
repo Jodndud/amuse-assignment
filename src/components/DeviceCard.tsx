@@ -2,15 +2,15 @@ import type { Device } from "@/types/Device";
 import styled from "styled-components";
 import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
-import { useToggleDevicePower } from "@/hooks/useToggleDevicePower";
+import { useToggleDeviceStatus } from "@/hooks/useToggleDeviceStatus";
 
 export default function DeviceCard({ device }: { device: Device }) {  
   const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
-      const { togglePower } = useToggleDevicePower();
+      const { toggleStatus } = useToggleDeviceStatus();
   
-      const handleTogglePower = (id: string) => {
+      const handleToggleStatus = (id: string) => {
           if (!id) return;
-          togglePower(id);
+          toggleStatus(id);
       };
 
   return (
@@ -20,18 +20,26 @@ export default function DeviceCard({ device }: { device: Device }) {
 
         <DetailWrapper>
           <Type>타입: {typeLabel}</Type>
-          <Status>상태: {device.status}</Status>
+          <Status>
+            상태: {device.status}
+            <div
+              className={`
+                w-[6px] h-[6px] rounded-full absolute -right-2 top-0 
+                ${device.status === "online" ? "bg-green-400" : "bg-red-500"}
+              `}
+            />
+          </Status>
         </DetailWrapper>
 
         {device.type === "light" && (
             <ToggleButton
-              $on={device.state.power == 'on'}
+              $on={device.status== 'online'}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                handleTogglePower(device?.id)}}
+                handleToggleStatus(device?.id)}}
             >
-                <Circle $on={device.state.power == 'on'} />
+                <Circle $on={device.status== 'online'} />
             </ToggleButton>
         )}
     </Card>
@@ -70,12 +78,14 @@ const DetailWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-top: 12px;
 `;
 
 const Type = styled.p`
 `;
 
 const Status = styled.span`
+  position: relative;
 `;
 
 const ToggleButton = styled.button<{ $on: boolean }>`
