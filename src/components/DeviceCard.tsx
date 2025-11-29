@@ -2,8 +2,16 @@ import type { Device } from "@/types/Device";
 import styled from "styled-components";
 import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
+import { useToggleDeviceStatus } from "@/hooks/useToggleDeviceStatus";
+
 export default function DeviceCard({ device }: { device: Device }) {  
   const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
+      const { toggleStatus } = useToggleDeviceStatus();
+  
+      const handleToggleStatus = (id: string) => {
+          if (!id) return;
+          toggleStatus(id);
+      };
 
   return (
     <Card>
@@ -12,12 +20,26 @@ export default function DeviceCard({ device }: { device: Device }) {
 
         <DetailWrapper>
           <Type>타입: {typeLabel}</Type>
-          <Status>상태: {device.status}</Status>
+          <Status>
+            상태: {device.status}
+            <div
+              className={`
+                w-[6px] h-[6px] rounded-full absolute -right-2 top-0 
+                ${device.status === "online" ? "bg-green-400" : "bg-red-500"}
+              `}
+            />
+          </Status>
         </DetailWrapper>
 
         {device.type === "light" && (
-            <ToggleButton $on={device.state.power == 'on'}>
-                <Circle $on={device.state.power == 'on'} />
+            <ToggleButton
+              $on={device.status== 'online'}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleToggleStatus(device?.id)}}
+            >
+                <Circle $on={device.status== 'online'} />
             </ToggleButton>
         )}
     </Card>
@@ -56,12 +78,14 @@ const DetailWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-top: 12px;
 `;
 
 const Type = styled.p`
 `;
 
 const Status = styled.span`
+  position: relative;
 `;
 
 const ToggleButton = styled.button<{ $on: boolean }>`
@@ -84,5 +108,5 @@ const Circle = styled.div<{ $on: boolean }>`
   height: 15px;
   background: #fff;
   border-radius: 50%;
-  transition: all 0.5s;
+  transition: all 0.2s;
 `;
