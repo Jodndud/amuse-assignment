@@ -13,6 +13,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
 const Wrapper = styled.header`
   width: 100%;
   position: fixed;
+  z-index: 99;
   top:0;
   background: #f2f2f2;
 `;

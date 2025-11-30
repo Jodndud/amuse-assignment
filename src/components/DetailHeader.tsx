@@ -18,6 +18,7 @@ const Wrapper = styled.header`
   width: 100%;
   background: #fff;
   position: fixed;
+  z-index: 99;
   top: 0;
 `;
 
