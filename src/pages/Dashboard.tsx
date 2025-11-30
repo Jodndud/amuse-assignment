@@ -63,7 +63,7 @@ const LinkWrapper = styled.div`
 
   @media (min-width: 400px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 20px 16px;
   }
 
   @media (min-width: 1400px) {
