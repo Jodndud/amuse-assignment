@@ -23,9 +23,3 @@ export const DEVICE_TYPE_LABEL: Record<string, string> = {
   ac: '에어컨',
   lock: '도어락',
 };
-
-// 실시간 상태
-export const DEVICE_STATUS_LABEL: Record<string, string> = {
-    offline: '',
-    online: ''
-};
