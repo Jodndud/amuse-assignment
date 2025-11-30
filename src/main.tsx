@@ -6,23 +6,13 @@ import { worker } from './mocks/browser.ts';
 
 import { RecoilRoot } from 'recoil';
 
-// 개발 환경에서만 worker사용
-if (import.meta.env.DEV) {
-  worker.start().then(() => {
-    createRoot(document.getElementById('root')!).render(
-      <RecoilRoot>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </RecoilRoot>
-    )
-  })
-} else {
+// 배포 & 개발 환경에서 worker사용
+worker.start().then(() => {
   createRoot(document.getElementById('root')!).render(
-      <RecoilRoot>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </RecoilRoot>
-    )
-}
+    <RecoilRoot>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </RecoilRoot>
+  )
+})

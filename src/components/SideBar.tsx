@@ -15,7 +15,7 @@ export default function SideBar({ open, onClose }: SideBarProps) {
         <HeaderArea>
           <span>우영님 안녕하세요!</span>
           <CloseButton type="button" onClick={onClose}>
-            <img src="/images/assets/close-btn.png" alt="닫기" />
+            <img src="/images/close-btn.png" alt="닫기" />
           </CloseButton>
         </HeaderArea>
 
@@ -69,6 +69,7 @@ const HeaderArea = styled.div`
 `;
 
 const CloseButton = styled.button`
+  cursor: pointer;
   img{
     width: 18px;
   }
