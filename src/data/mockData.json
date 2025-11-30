@@ -6,7 +6,7 @@
       "type": "light", 
       "status": "online", 
       "state": { "power": "off" },
-      "imageUrl": "/src/assets/light.png"
+      "imageUrl": "/images/light.png"
     },
     { 
       "id": "d2",
@@ -14,7 +14,7 @@
       "type": "ac", 
       "status": "online", 
       "state": { "power": "on", "temperature": 24 },
-      "imageUrl": "/src/assets/ac.png"
+      "imageUrl": "/images/ac.png"
     },
     { 
       "id": "d3", 
@@ -22,7 +22,7 @@
       "type": "lock", 
       "status": "offline", 
       "state": { "locked": true },
-      "imageUrl": "/src/assets/lock.png"
+      "imageUrl": "/images/lock.png"
     }
   ]
 }

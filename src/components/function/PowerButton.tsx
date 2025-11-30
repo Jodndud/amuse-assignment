@@ -32,8 +32,8 @@ const IconButton = styled.div<{ $on: boolean }>`
   background-color: ${({ $on }) => ($on ? "#225EA2" : "#fafafa")};
   background-image: ${({ $on }) =>
     $on
-      ? "url('/src/assets/power-btn-on.svg')"
-      : "url('/src/assets/power-btn-off.svg')"};
+      ? "url('/images/power-btn-on.svg')"
+      : "url('/images/power-btn-off.svg')"};
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px 28px;

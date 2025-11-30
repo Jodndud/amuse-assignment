@@ -19,7 +19,7 @@ export default function Temperature({ deviceId, temperature }: TemperatureProps)
       <Title>🌡️온도조절</Title>
       <Row>
         <CircleButton onClick={() => handleChangeTemp(-1)}>
-          <img src="/src/assets/minus-icon.svg" alt="minus" />
+          <img src="/images/minus-icon.svg" alt="minus" />
         </CircleButton>
 
         <TempText>
@@ -28,7 +28,7 @@ export default function Temperature({ deviceId, temperature }: TemperatureProps)
         </TempText>
 
         <CircleButton onClick={() => handleChangeTemp(1)}>
-          <img src="/src/assets/plus-icon.svg" alt="plus" />
+          <img src="/images/plus-icon.svg" alt="plus" />
         </CircleButton>
       </Row>
     </Content>

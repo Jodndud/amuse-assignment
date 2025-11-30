@@ -7,7 +7,7 @@ export default function DetailHeader({ children }: {children: React.ReactNode}) 
   return (
     <Wrapper>
         <HeaderContainer>
-            <BackButton onClick={() => navigate(-1)}><Icon src="/src/assets/back-icon.svg" /></BackButton>
+            <BackButton onClick={() => navigate(-1)}><Icon src="/images/back-icon.svg" /></BackButton>
             <Title>{children}</Title>
         </HeaderContainer>
     </Wrapper>

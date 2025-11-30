@@ -11,7 +11,7 @@ export default function Header({ children, onClickMenu }: HeaderProps) {
       <HeaderContainer>
         <Title>{children}</Title>
         <MenuButton type="button" onClick={onClickMenu}>
-          <img src="/src/assets/sidebar-btn.png" alt="메뉴 열기" />
+          <img src="/images/sidebar-btn.png" alt="메뉴 열기" />
         </MenuButton>
       </HeaderContainer>
     </Wrapper>

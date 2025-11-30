@@ -15,7 +15,7 @@ export default function SideBar({ open, onClose }: SideBarProps) {
         <HeaderArea>
           <span>우영님 안녕하세요!</span>
           <CloseButton type="button" onClick={onClose}>
-            <img src="/src/assets/close-btn.png" alt="닫기" />
+            <img src="/images/assets/close-btn.png" alt="닫기" />
           </CloseButton>
         </HeaderArea>
 
