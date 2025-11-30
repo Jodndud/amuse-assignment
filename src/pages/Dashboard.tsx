@@ -1,41 +1,62 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Header from '@/components/Header'
-import DeviceCard from "@/components/DeviceCard";
+import { useState, useMemo } from "react";
 
-import { useRecoilValue } from 'recoil'
-import { devicesState } from '@/recoil/devicesState'
-import { useGetDevices } from '@/hooks/useGetDevice'
+import Header from "@/components/Header";
+import DeviceCard from "@/components/DeviceCard";
+import DeviceFilter from "@/components/DeviceFilter";
+
+import { useRecoilValue } from "recoil";
+import { devicesState } from "@/recoil/devicesState";
+import { useGetDevices } from "@/hooks/useGetDevice";
 
 export default function Dashboard() {
-  useGetDevices()
-  const devices = useRecoilValue(devicesState)
+  useGetDevices();
+  const devices = useRecoilValue(devicesState);
+  const [selectedCategory, setSelectedCategory] = useState<"all" | string>("all");
+
+  const filteredDevices = useMemo(() => {
+    if (selectedCategory === "all") return devices;
+    return devices.filter((device) => device.type === selectedCategory);
+  }, [devices, selectedCategory]);
 
   return (
     <Wrapper>
       <Header>AmuseQ Dashboard</Header>
+
       <Container>
         <Title>내 등록 기기</Title>
-        <LinkWrapper>
-          {devices.map((device) => (
-            <Link key={device.id} to={`/device/${device.id}`}>
-              <DeviceCard device={device} />
-            </Link>
-          ))}
-        </LinkWrapper>
+
+        <DeviceFilter
+          selected={selectedCategory}
+          onChange={setSelectedCategory}
+        />
+
+        {filteredDevices.length === 0 ? (
+          <div className="py-10 text-center text-sm text-[#777]">등록된 타입의 기기가 없습니다.</div>
+        ) : (
+          <LinkWrapper>
+            {filteredDevices.map((device) => (
+              <Link key={device.id} to={`/device/${device.id}`}>
+                <DeviceCard device={device} />
+              </Link>
+            ))}
+          </LinkWrapper>
+        )}
       </Container>
     </Wrapper>
   );
 }
 
 const LinkWrapper = styled.div`
-  display:grid;
+  width: 100%;
+  display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap:16px;
+  gap: 16px;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap:30px;
+    gap: 30px;
   }
 
   @media (min-width: 1400px) {
@@ -46,7 +67,7 @@ const LinkWrapper = styled.div`
 const Title = styled.h2`
   font-weight: 600;
   font-size: 16px;
-  margin-bottom: 18px;
+  margin: 18px 0;
 
   @media (min-width: 768px) {
     font-size: 18px;
@@ -60,7 +81,7 @@ const Title = styled.h2`
 const Wrapper = styled.main`
   width: 100%;
 `;
- 
+
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;

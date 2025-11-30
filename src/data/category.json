@@ -1,0 +1,24 @@
+{
+    "categories" : [
+        {
+            "id": "01",
+            "type": "light",
+            "name": "조명"
+        },
+        {
+            "id": "02",
+            "type": "ac",
+            "name": "에어컨"
+        },
+        {
+            "id": "03",
+            "type": "lock",
+            "name": "도어락"
+        },
+        {
+            "id": "04",
+            "type": "laundry",
+            "name": "세탁기"
+        }
+    ]
+}
