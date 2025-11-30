@@ -50,7 +50,6 @@ const Card = styled.div`
     position: relative;
     background: #fff;
     border-radius: 20px;
-    border: 1px solid #eee;
     box-shadow: 0 2px 6px 1px #0000001b;
     padding: 20px;
     display: flex;

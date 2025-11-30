@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { devicesState } from "@/recoil/devicesState";
 import type { Device } from "@/types/Device";
@@ -9,16 +10,18 @@ export default function MyDevices() {
   return (
     <Wrapper>
       {devices.map((device) => (
-        <Item key={device.id}>
-          <IconBox>
-            <Icon src={device.imageUrl} alt={device.name} />
-            <StatusDot $status={device.status} />
-          </IconBox>
+        <Link key={device.id} to={`/device/${device.id}`}>
+          <Item key={device.id}>
+            <IconBox>
+              <Icon src={device.imageUrl} alt={device.name} />
+              <StatusDot $status={device.status} />
+            </IconBox>
 
-          <Info>
-            <Name>{device.name}</Name>
-          </Info>
-        </Item>
+            <Info>
+              <Name>{device.name}</Name>
+            </Info>
+          </Item>
+        </Link>
       ))}
     </Wrapper>
   );
@@ -27,7 +30,7 @@ export default function MyDevices() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 `;
 
 const Item = styled.div`
@@ -38,8 +41,8 @@ const Item = styled.div`
 
 const IconBox = styled.div`
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 4px;
   background: #e9f1ff;
 `;
@@ -50,11 +53,11 @@ const Icon = styled.img`
 `;
 
 const StatusDot = styled.span<{ $status: string }>`
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   position: absolute;
   top: -4px;
-  right: -4px;
+  right: -5px;
   border-radius: 50%;
   background-color: ${({ $status }) =>
     $status === "online" ? "#22c55e" : "#ef4444"};
