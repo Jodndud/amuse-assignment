@@ -3,16 +3,12 @@
 사물인터넷TASK 과제를 위한 IoT 기기 대시보드 및 상세 제어 웹 애플리케이션입니다.  
 React, Recoil, React Router DOM, styled-components를 기반으로 구현되었습니다.
 
+- 사용자 성능을 개선하기위해 `mockDate.json`에 `imageUrl` 필드 추가
+- `category.json` 데이터 추가
+
 ## 프로젝트 실행 방법
 
-### 1. 리포지토리 클론
-
-```bash
-git clone https://github.com/Jodndud/amuse-assignment
-cd amuse-assignment
-```
-
-### 2. 패키지 설치
+### 1. 패키지 설치
 ```bash
 # npm 사용 시
 npm install
@@ -21,7 +17,7 @@ npm install
 yarn install
 ```
 
-### 3. 개발 서버 실행
+### 2. 개발 서버 실행
 ```bash
 # npm
 npm run dev
@@ -30,21 +26,20 @@ npm run dev
 yarn dev
 ```
 
-## 프로젝트 구조
+## 3. 프로젝트 구조
 ```
 프로젝트 루트/
-├── docs/
-│   ├── data-flow.md
+├── docs/               # 프로젝트 문서 작성
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── data/
-│   ├── hooks/
-│   ├── mocks/
-│   ├── pages/
-│   ├── recoil/
-│   ├── types/
+│   ├── assets/         # 이미지 데이터
+│   ├── components/     # 컴포넌트
+│   ├── data/           # 사용데이터
+│   ├── hooks/          # 커스텀 훅 관리
+│   ├── mocks/          # msw설정 및 handler정의
+│   ├── pages/          # 라우팅 페이지
+│   ├── recoil/         # Recoil 상태관리
+│   ├── types/          # 타입 관리
 ├── App.css
 ├── App.tsx
 ├── index.css
@@ -53,7 +48,7 @@ yarn dev
 └── README.md
 ```
 
-## Git Commit 컨벤션
+## 4. Git Commit 컨벤션
 이 프로젝트에서는 의미 있는 커밋 단위와 일관된 커밋 메시지를 위해
 다음과 같은 Prefix 규칙을 사용합니다.
 
