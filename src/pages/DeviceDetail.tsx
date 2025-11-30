@@ -149,7 +149,7 @@ const PowerButton = styled.div<{ $on: boolean }>`
 
   background: #fafafa;
   background-color: ${props =>
-    props.$on ? "#1AACC6" : "#fafafa"};
+    props.$on ? "#225EA2" : "#fafafa"};
   background-image: url(${props =>
     props.$on
       ? '/src/assets/power-btn-on.svg'
