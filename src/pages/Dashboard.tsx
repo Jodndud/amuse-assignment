@@ -5,6 +5,7 @@ import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import DeviceCard from "@/components/DeviceCard";
 import DeviceFilter from "@/components/DeviceFilter";
+import SideBar from "@/components/SideBar";
 
 import { useRecoilValue } from "recoil";
 import { devicesState } from "@/recoil/devicesState";
@@ -13,6 +14,7 @@ import { useGetDevices } from "@/hooks/useGetDevice";
 export default function Dashboard() {
   useGetDevices();
   const devices = useRecoilValue(devicesState);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<"all" | string>("all");
 
   const filteredDevices = useMemo(() => {
@@ -22,7 +24,12 @@ export default function Dashboard() {
 
   return (
     <Wrapper>
-      <Header>AmuseQ Dashboard</Header>
+      <SideBar
+        open={isSideBarOpen}
+        onClose={() => setIsSideBarOpen(false)}
+      />
+      
+      <Header onClickMenu={() => setIsSideBarOpen(true)}>AmuseQ Dashboard</Header>
 
       <Container>
         <Title>내 등록 기기</Title>
