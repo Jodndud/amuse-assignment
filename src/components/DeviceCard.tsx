@@ -51,6 +51,7 @@ const Card = styled.div`
     background: #fff;
     border-radius: 20px;
     border: 1px solid #eee;
+    box-shadow: 0 2px 6px 1px #0000001b;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -71,14 +72,21 @@ const Title = styled.div`
     width: fit-content;
     padding: 6px 18px;
     border-radius: 16px;
+    white-space: nowrap;
 `;
 
 const DetailWrapper = styled.div`
     font-size: 14px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 4px;
     margin-top: 12px;
+
+    @media(min-width: 768px){
+      flex-direction: row;
+      gap: 12px;
+    }
 `;
 
 const Type = styled.p`

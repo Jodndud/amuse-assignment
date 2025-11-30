@@ -97,11 +97,15 @@ const Icon = styled.img`
 `;
 
 const DetailWrapper = styled.div`
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  @media (max-width: 400px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const Detail = styled.span<{ $on: boolean }>`

@@ -46,6 +46,10 @@ const FilterWrapper = styled.nav`
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
+
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 4px; 
 `;
 
 const LoadingText = styled.span`
