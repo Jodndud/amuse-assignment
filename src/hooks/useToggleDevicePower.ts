@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { devicesState } from "@/recoil/devicesState";
 
 export function useToggleDevicePower() {
-  const [devices, setDevices] = useRecoilState(devicesState);
+  const [_, setDevices] = useRecoilState(devicesState);
 
   const togglePower = (deviceId: string) => {
     setDevices(prev =>
