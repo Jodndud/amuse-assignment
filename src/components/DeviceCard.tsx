@@ -2,15 +2,15 @@ import type { Device } from "@/types/Device";
 import styled from "styled-components";
 import { DEVICE_TYPE_LABEL } from '@/recoil/devicesState'
 
-import { useToggleDeviceStatus } from "@/hooks/useToggleDeviceStatus";
+import { useToggleDevicePower } from "@/hooks/useToggleDevicePower";
 
 export default function DeviceCard({ device }: { device: Device }) {  
   const typeLabel = DEVICE_TYPE_LABEL[device.type] ?? device.type
-      const { toggleStatus } = useToggleDeviceStatus();
+      const { togglePower } = useToggleDevicePower();
   
       const handleToggleStatus = (id: string) => {
           if (!id) return;
-          toggleStatus(id);
+          togglePower(id);
       };
 
   return (
@@ -33,13 +33,13 @@ export default function DeviceCard({ device }: { device: Device }) {
 
         {device.type === "light" && (
             <ToggleButton
-              $on={device.status== 'online'}
+              $on={device.state.power== 'on'}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 handleToggleStatus(device?.id)}}
             >
-                <Circle $on={device.status== 'online'} />
+                <Circle $on={device.state.power== 'on'} />
             </ToggleButton>
         )}
     </Card>
