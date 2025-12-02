@@ -18,7 +18,7 @@ export default function DeviceDetail(){
             <DetailHeader>{device?.name}</DetailHeader>
 
             <IconWrapper>
-                <Icon src={device?.imageUrl} alt={device?.name} />
+                <Icon src={device?.imageUrl} alt={device?.name} role="img" />
             </IconWrapper>
 
             <Container>

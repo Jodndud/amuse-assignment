@@ -19,6 +19,7 @@ export default function PowerButton({ deviceId, power }: PowerButtonProps) {
       $on={power === "on"}
       onClick={handleClick}
       aria-label={power === "on" ? "전원 끄기" : "전원 켜기"}
+      aria-pressed={power === "on"}
     />
   );
 }
