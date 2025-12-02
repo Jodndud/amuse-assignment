@@ -6,15 +6,25 @@ interface LockProps {
 
 export default function Lock({ locked }: LockProps) {
   return (
-    <Content>
+    <Content
+      aria-label="잠금 상태"
+    >
       <Title>🔒잠금여부</Title>
 
       {locked ? (
-        <LockBox $locked={true}>
+        <LockBox
+          $locked={true}
+          role="status"
+          aria-live="polite"
+        >
           현재 기기가 잠금 상태입니다
         </LockBox>
       ) : (
-        <LockBox $locked={false}>
+        <LockBox
+          $locked={false}
+          role="status"
+          aria-live="polite"
+        >
           현재 기기가 잠금해제 상태입니다
         </LockBox>
       )}
