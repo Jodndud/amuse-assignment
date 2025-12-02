@@ -42,9 +42,9 @@ export default function Dashboard() {
         {filteredDevices.length === 0 ? (
           <div className="py-10 text-center text-sm text-[#777]">등록된 타입의 기기가 없습니다.</div>
         ) : (
-          <LinkWrapper>
+          <LinkWrapper role="list">
             {filteredDevices.map((device) => (
-              <Link key={device.id} to={`/device/${device.id}`}>
+              <Link key={device.id} to={`/device/${device.id}`} role="listitem">
                 <DeviceCard device={device} />
               </Link>
             ))}

@@ -20,7 +20,7 @@ export default function DeviceCard({ device }: { device: Device }) {
 
         <DetailWrapper>
           <Type>타입: {typeLabel}</Type>
-          <Status>
+          <Status aria-live="polite">
             상태: {device.status}
             <div
               className={`
@@ -38,6 +38,8 @@ export default function DeviceCard({ device }: { device: Device }) {
                 e.preventDefault();
                 e.stopPropagation();
                 handleToggleStatus(device?.id)}}
+                aria-label={device.status === 'online' ? `${device.name} 전원 끄기` : `${device.name} 전원 켜기`}
+                aria-pressed={device.status === 'online'}
             >
                 <Circle $on={device.status== 'online'} />
             </ToggleButton>
