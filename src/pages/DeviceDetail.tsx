@@ -13,12 +13,18 @@ export default function DeviceDetail(){
     const { device } = useGetDeviceById(deviceId)
     const typeLabel = device ? DEVICE_TYPE_LABEL[device.type] ?? device.type : ''
 
+    const iconSrc =
+      device?.state && device?.state.power === "on" &&
+      (device?.type === "light" || device?.type === "ac")
+        ? device?.imageUrlOn
+        : device?.imageUrl;
+        
     return(
         <Wrapper>
             <DetailHeader>{device?.name}</DetailHeader>
 
             <IconWrapper>
-                <Icon src={device?.imageUrl} alt={device?.name} />
+                <Icon src={iconSrc} alt={device?.name} />
             </IconWrapper>
 
             <Container>

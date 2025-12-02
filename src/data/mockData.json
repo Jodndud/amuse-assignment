@@ -6,7 +6,8 @@
       "type": "light", 
       "status": "online", 
       "state": { "power": "off" },
-      "imageUrl": "/images/light.png"
+      "imageUrl": "/images/light.png",
+      "imageUrlOn": "/images/light-on.png"
     },
     { 
       "id": "d2",
@@ -14,7 +15,8 @@
       "type": "ac", 
       "status": "online", 
       "state": { "power": "on", "temperature": 24 },
-      "imageUrl": "/images/ac.png"
+      "imageUrl": "/images/ac.png",
+      "imageUrlOn": "/images/ac-on.png"
     },
     { 
       "id": "d3", 
