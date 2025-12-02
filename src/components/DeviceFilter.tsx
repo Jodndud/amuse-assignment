@@ -21,10 +21,11 @@ export default function DeviceFilter({
   }
 
   return (
-    <FilterWrapper>
+    <FilterWrapper role="group" aria-label="기기 타입 필터">
       <FilterButton
         $active={selected === "all"}
         onClick={() => onChange("all")}
+        aria-current={selected === "all" ? "true" : "false"}
       >
         전체
       </FilterButton>
@@ -34,6 +35,7 @@ export default function DeviceFilter({
           key={category.id}
           $active={selected === category.type}
           onClick={() => onChange(category.type)}
+          aria-current={selected === category.type ? "true" : "false"}
         >
           {category.name}
         </FilterButton>
