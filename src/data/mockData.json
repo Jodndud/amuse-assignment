@@ -2,7 +2,7 @@
   "devices": [
     { 
       "id": "d1", 
-      "name": "거실 조명", 
+      "name": "거실 조명",
       "type": "light", 
       "status": "online", 
       "state": { "power": "off" },

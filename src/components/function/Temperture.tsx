@@ -18,16 +18,25 @@ export default function Temperature({ deviceId, temperature }: TemperatureProps)
     <Content>
       <Title>🌡️온도조절</Title>
       <Row>
-        <CircleButton onClick={() => handleChangeTemp(-1)}>
+        <CircleButton 
+          onClick={() => handleChangeTemp(-1)}
+          aria-label="1도 하락"
+        >
           <img src="/images/minus-icon.svg" alt="minus" />
         </CircleButton>
 
-        <TempText>
+        <TempText
+            aria-live="polite" 
+            aria-atomic="true"
+        >
           {temperature}
           <TempUnit>℃</TempUnit>
         </TempText>
 
-        <CircleButton onClick={() => handleChangeTemp(1)}>
+        <CircleButton
+          onClick={() => handleChangeTemp(1)}
+          aria-label="1도 상승"
+        >
           <img src="/images/plus-icon.svg" alt="plus" />
         </CircleButton>
       </Row>
