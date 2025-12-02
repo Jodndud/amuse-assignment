@@ -10,8 +10,8 @@ body{height: 100vh;}
 
 #root{
   background: #f2f2f2;
-  height: 100%;
-  padding-top: 62px;
+  min-height:100vh;
+  padding: 62px 0 40px;
 
   @media(min-width:786px){
     padding-top: 74px;
