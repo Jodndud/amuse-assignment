@@ -1,10 +1,13 @@
 # IoT Device Dashboard
 
+- [Amuse과제 Dashboard](https://amuse-assignment.vercel.app/)
+
 사물인터넷TASK 과제를 위한 IoT 기기 대시보드 및 상세 제어 웹 애플리케이션입니다.  
 React, Recoil, React Router DOM, styled-components를 기반으로 구현되었습니다.
 
 - 사용자 경험을 개선하기위해 `mockDate.json`에 `imageUrl` 필드 추가
 - `category.json` 데이터 추가
+- `docs/` 에 기능별 문서 정리
 
 ## 프로젝트 실행 방법
 
@@ -30,9 +33,9 @@ yarn dev
 ```
 프로젝트 루트/
 ├── docs/               # 프로젝트 문서 작성
-├── public/
+├── public/             # 이미지 데이터(url접근)
 ├── src/
-│   ├── assets/         # 이미지 데이터
+│   ├── assets/         # 이미지 데이터(import접근)
 │   ├── components/     # 컴포넌트
 │   ├── data/           # 사용데이터
 │   ├── hooks/          # 커스텀 훅 관리
