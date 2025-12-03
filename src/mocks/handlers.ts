@@ -12,9 +12,9 @@ export const handlers = [
     return HttpResponse.json(devices)
   }),
 
-  http.get('/api/devices/:id', ({ params }) => {
-    const { id } = params
-    const device = devices.find((d) => d.id === id)
+  http.get('/api/devices/:deviceId', ({ params }) => {
+    const { deviceId } = params
+    const device = devices.find((d) => String(d.id) === String(deviceId));
 
     if (!device) {
       return HttpResponse.json({ message: 'Not found' }, { status: 404 })
