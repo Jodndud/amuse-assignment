@@ -123,18 +123,9 @@ const Detail = styled.span<{ $on: boolean }>`
 `;
 
 const ContentWrapper = styled.div`
-  display:grid;
-  grid-template-columns: repeat(1, 1fr);
+  display:flex;
+  flex-direction: column;
   gap:20px;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap:30px;
-  }
-
-  @media (min-width: 1400px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 `
 const Description = styled.div`
   padding: 60px 0;
