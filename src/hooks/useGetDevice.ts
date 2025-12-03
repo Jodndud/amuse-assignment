@@ -20,12 +20,13 @@ export function useGetDevices() {
 
 export function useGetDeviceById(deviceId?: string) {
   const [devices, setDevices] = useRecoilState(devicesState)
-
+  console.log("useEffect 전")
   const device = devices.find((d) => d.id === deviceId)
-
+  
   useEffect(() => {
+    console.log("useEffect 후")
     if (device) {
-      console.log("Device found in state:", device);
+      console.log("디바이스 있음");
       return;
     }
 
@@ -33,7 +34,7 @@ export function useGetDeviceById(deviceId?: string) {
       const res = await fetch(`/api/devices/${deviceId}`)
       const data = await res.json()
 
-      console.log("Fetched device data:", data);
+      console.log("load함수");
 
       setDevices((prev) =>
         prev.some((d) => d.id === deviceId)

@@ -13,6 +13,9 @@ export default function DeviceDetail(){
     const { device } = useGetDeviceById(deviceId)
     const typeLabel = device ? DEVICE_TYPE_LABEL[device.type] ?? device.type : ''
 
+    console.log("deviceId:", deviceId);
+    console.log("device:", device);
+    
     const iconSrc =
       device?.state && device?.state.power === "on" &&
       (device?.type === "light" || device?.type === "ac")
