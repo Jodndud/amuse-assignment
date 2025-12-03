@@ -14,10 +14,7 @@ export const handlers = [
 
   http.get('/api/devices/:deviceId', ({ params }) => {
     const { deviceId } = params
-    const device = devices.find((d) => {
-      console.log(d.id)
-      return d.id === deviceId
-    });
+    const device = devices.find((d) => d.id === deviceId);
 
     if (!device) {
       return HttpResponse.json({ message: 'Not found' }, { status: 404 })

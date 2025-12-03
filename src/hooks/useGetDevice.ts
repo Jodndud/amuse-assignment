@@ -24,11 +24,16 @@ export function useGetDeviceById(deviceId?: string) {
   const device = devices.find((d) => d.id === deviceId)
 
   useEffect(() => {
-    if (device) return
+    if (device) {
+      console.log("Device found in state:", device);
+      return;
+    }
 
     async function load() {
       const res = await fetch(`/api/devices/${deviceId}`)
       const data = await res.json()
+
+      console.log("Fetched device data:", data);
 
       setDevices((prev) =>
         prev.some((d) => d.id === deviceId)
