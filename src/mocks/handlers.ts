@@ -16,10 +16,6 @@ export const handlers = [
     const { deviceId } = params
     const device = devices.find((d) => String(d.id) === String(deviceId));
 
-    if (!device) {
-      return HttpResponse.json({ message: 'Not found' }, { status: 404 })
-    }
-
     return HttpResponse.json(device)
   }),
 
