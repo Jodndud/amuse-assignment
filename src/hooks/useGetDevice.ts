@@ -31,10 +31,10 @@ export function useGetDeviceById(deviceId?: string) {
       const data = await res.json()
 
       setDevices((prev) =>
-      prev.some((d) => d.id === deviceId)
-        ? prev.map((d) => (d.id === deviceId ? data : d))
-        : [...prev, data]
-    )
+        prev.some((d) => d.id === deviceId)
+          ? prev.map((d) => (d.id === deviceId ? data : d))
+          : [...prev, data]
+      )
     }
 
     load()
