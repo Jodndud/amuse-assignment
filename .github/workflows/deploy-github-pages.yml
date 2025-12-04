@@ -7,25 +7,45 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: write # GitHub Pages에 배포하기 위한 쓰기 권한
+  id-token: write # OIDC 토큰을 사용하기 위한 권한
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # Manual Checkout
-      - uses: actions/checkout@v4
+      - name: ⚙️ Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # Set up Node
-      - uses: actions/setup-node@v4
+
+      - name: 🛠️ Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
-      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+          cache: 'yarn' # yarn 캐싱을 활성화하여 설치 속도 향상
+
+      - name: 📦 Install dependencies and Build Storybook
+        run: |
+          yarn install
+          yarn build-storybook # 사용자님의 빌드 명령어
+
+      - name: 🌐 Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: ⬆️ Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v3
         with:
-          install_command: yarn install
-          build_command: yarn build-storybook
-          path: storybook-static
-          checkout: false
+          path: storybook-static 
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
