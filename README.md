@@ -29,6 +29,12 @@ npm run dev
 yarn dev
 ```
 
+#### 2-1. 스토리북 실행
+```bash
+# npm
+npm run storybook
+```
+
 ### 3. 프로젝트 구조
 ```
 프로젝트 루트/
@@ -42,6 +48,7 @@ yarn dev
 │   ├── mocks/          # msw설정 및 handler정의
 │   ├── pages/          # 라우팅 페이지
 │   ├── recoil/         # Recoil 상태관리
+│   ├── stories/        # 스토리 관리
 │   ├── types/          # 타입 관리
 ├── App.css
 ├── App.tsx
