@@ -32,7 +32,7 @@ yarn dev
 #### 2-1. 스토리북 실행
 ```bash
 # npm
-npm run storybook 
+npm run storybook
 ```
 
 ### 3. 프로젝트 구조
