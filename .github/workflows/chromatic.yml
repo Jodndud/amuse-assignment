@@ -1,25 +1,24 @@
-# ... (상단 설정은 동일)
+name: 'Chromatic Deployment'
+
+on: push
+
 jobs:
-  chromatic:
-    name: 'Run Chromatic'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Setup Node.js Environment 💡
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20' # 프로젝트에 맞는 Node 버전으로 변경하세요
-          cache: 'yarn' # yarn.lock 파일을 기반으로 캐시 설정
+  chromatic:
+    name: 'Run Chromatic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install Dependencies (yarn install) 🔑
-        run: yarn install --frozen-lockfile # 명시적인 설치 명령어 사용
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 프로젝트의 Node.js 버전에 맞게 수정
+          cache: 'yarn'
+      
+      - run: yarn install --frozen-lockfile
 
-      - name: Run Chromatic Deployment
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
