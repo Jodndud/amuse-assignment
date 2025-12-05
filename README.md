@@ -7,7 +7,7 @@ React, Recoil, React Router DOM, styled-components를 기반으로 구현되었�
 
 - 사용자 경험을 개선하기위해 `mockDate.json`에 `imageUrl` 필드 추가
 - `category.json` 데이터 추가
-- `docs/` 에 기능별 문서 정리
+- `docs/` 에 기능별 문서 정리 
 
 ### 프로젝트 실행 방법
 
