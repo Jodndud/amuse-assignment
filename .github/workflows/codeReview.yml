@@ -1,0 +1,20 @@
+name: Send PR Webhook
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook to n8n
+        run: |
+          curl -X POST "https://doriconi.app.n8n.cloud/webhook-test/7ca63034-6b0e-46cf-a8fb-e9a676c96cd0" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repository": "${{ github.repository }}",
+              "pull_request_number": ${{ github.event.pull_request.number }},
+              "sender": "${{ github.actor }}",
+              "action": "${{ github.event.action }}"
+            }'
