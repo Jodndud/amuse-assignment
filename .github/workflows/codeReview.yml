@@ -11,11 +11,12 @@ jobs:
     steps:
       - name: Send webhook to n8n
         run: |
-          curl -X POST "https://doriconi.app.n8n.cloud/webhook-test/7ca63034-6b0e-46cf-a8fb-e9a676c96cd0" \
+          curl -X POST "https://doriconi.app.n8n.cloud/webhook-test/xxx" \
             -H "Content-Type: application/json" \
-            -d '{
-              "repository": "${{ github.repository }}",
-              "pull_request_number": ${{ github.event.pull_request.number }},
-              "sender": "${{ github.actor }}",
-              "action": "${{ github.event.action }}"
-            }'
+            -d "$(jq -n \
+              --arg repo "$GITHUB_REPOSITORY" \
+              --arg sha "$GITHUB_SHA" \
+              --arg ref "$GITHUB_REF_NAME" \
+              --arg actor "$GITHUB_ACTOR" \
+              --arg msg "${{ github.event.head_commit.message }}" \
+              '{repository: $repo, commit_sha: $sha, branch: $ref, sender: $actor, message: $msg}')"
