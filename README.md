@@ -12,7 +12,7 @@ React, Recoil, React Router DOM, styled-components를 기반으로 구현되었�
 ### 프로젝트 실행 방법
 
 #### 1. 패키지 설치
-```bash
+```bash 
 # npm 사용 시
 npm install
 
